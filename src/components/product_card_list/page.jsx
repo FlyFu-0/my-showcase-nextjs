@@ -14,7 +14,7 @@ const ProductCardList = ({
       <img
         alt={name}
         src={images[0]}
-        className="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-70"
+        className="aspect-square w-full rounded-md bg-white object-cover group-hover:opacity-75 lg:aspect-auto lg:h-70"
       />
       <div className="mt-4 flex justify-between">
         <div>

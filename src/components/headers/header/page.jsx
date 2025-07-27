@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Header1 = () => {
   return (
-    <header className="bg-white">
+    <header>
       <nav
         aria-label="Global"
         className="mx-auto flex max-w-7xl items-center justify-center p-6 lg:px-8"
@@ -17,7 +17,7 @@ const Header1 = () => {
           >
             Brands
           </Link>
-          <Link href="#" className="text-sm/6 font-semibold text-gray-900">
+          <Link href="/about" className="text-sm/6 font-semibold text-gray-900">
             About
           </Link>
         </div>

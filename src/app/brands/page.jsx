@@ -1,59 +1,20 @@
 import products from "@/app/products";
+import BrandCard from "@/components/brand_card/page";
+import { notFound } from "next/navigation";
 
 const BrandsGrid = () => {
-  // const brands = products.map((brand) => brand.brand)
+  const brands = products.map((brand) => brand.brand);
 
-  const brands = [
-    "Nike",
-    "New Balance",
-    "Nike",
-    "New Balance",
-    "Nike",
-    "New Balance",
-    "Nike",
-    "New Balance",
-    "Nike",
-    "New Balance",
-    "Nike",
-    "New Balance",
-    "Nike",
-    "New Balance",
-    "Nike",
-    "New Balance",
-    "Nike",
-    "New Balance",
-    "Nike",
-    "New Balance",
-    "Nike",
-    "New Balance",
-    "Nike",
-    "New Balance",
-    "Nike",
-    "New Balance",
-    "Nike",
-    "New Balance",
-    "Nike",
-    "New Balance",
-    "Nike",
-    "New Balance",
-    "Nike",
-    "New Balance",
-    "Nike",
-    "New Balance",
-    "Nike",
-    "New Balance",
-  ];
+  if (!brands) {
+    return notFound();
+  }
 
   return (
-    <div>
-      <article className="flex wrap gap-4">
-        {brands.map((name, i) => (
-          <div key={i} className="flex items-center shadow justify-center text-center rounded-xl px-16 py-3">
-            <span>{name}</span>
-          </div>
-        ))}
-      </article>
-    </div>
+    <article className="grid grid-cols-2 lg:grid-cols-6 sm:grid-cols-4 gap-4">
+      {brands.map((name, i) => (
+        <BrandCard key={i} name={name} />
+      ))}
+    </article>
   );
 };
 

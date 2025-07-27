@@ -3,24 +3,21 @@ import products from "@/app/products";
 import { notFound } from "next/navigation";
 import PageHeader from "@/components/page_header/page";
 import { formatLink, toLinkFormat } from "@/helpers/helpers";
+import { getProductByBrand } from "@/repository/repository";
 
 export const generateMetadata = async ({ params }) => {
   const { brand } = params;
 
-  const product = products.find(
-    (el) => toLinkFormat(el.brand) === toLinkFormat(brand)
-  );
+  const brandProduct = getProductByBrand(brand);
 
   return {
-    title: `${product.brand}`,
-    description: `Product for "${product.brand}" brand`,
+    title: `${brandProduct.brand}`,
+    description: `Product for "${brandProduct.brand}" brand`,
   };
 };
 
 export default function BrandProductsGrid({ params }) {
-  const brandProducts = products.find(
-    (prod) => toLinkFormat(prod.brand) === toLinkFormat(params.brand)
-  );
+  const brandProducts = getProductByBrand(params.brand);
 
   if (!brandProducts) {
     return notFound();

@@ -13,7 +13,7 @@ export default function ProductsGrid() {
 
         {products.map((product) => (
           <div className="mt-3 mb-8" key={product.brand}>
-            <Link href={formatLink('/#brand#', { brand: product.brand })}>
+            <Link href={formatLink('/#brand#', { brand: product.brand })} className="hover:underline">
               <SectionHeader title={product.brand} />
             </Link>
             <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">

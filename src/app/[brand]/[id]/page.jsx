@@ -1,39 +1,24 @@
-import products from "@/app/products";
-import { toLinkFormat } from "@/helpers/helpers";
+import { getProductByName } from "@/repository/repository";
 
 export const generateMetadata = async ({ params }) => {
   const { brand, id } = params;
 
-  const brandProduct = products.find(
-    (el) => toLinkFormat(el.brand) === toLinkFormat(brand)
-  );
-
-  const product = brandProduct.models.find(
-    (el) => toLinkFormat(el.name) === toLinkFormat(id)
-  );
+  const product = getProductByName(brand, id);
 
   return {
-    title: `${brandProduct.brand} ${product.name}`,
-    description: `${product.brand} ${product.name}`,
+    title: `${product.brand} ${product.model.name}`,
+    description: `${product.brand} ${product.model.name}`,
   };
 };
 
 export default function DetailProductPage({ params }) {
-  const brand = products.find(
-    (prod) => toLinkFormat(prod.brand) === toLinkFormat(params.brand)
-  );
+  const brandProduct = getProductByName(params.brand, params.id);
 
-  if (!brand) {
+  if (!brandProduct) {
     return notFound();
   }
 
-  const product = brand.models.find(
-    (prod) => toLinkFormat(prod.name) === toLinkFormat(params.id)
-  );
-
-  if (!product) {
-    return notFound();
-  }
+  const product = brandProduct.model;
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">

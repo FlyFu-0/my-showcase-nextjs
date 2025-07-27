@@ -12,11 +12,13 @@ const ProductCardList = ({
 }) => {
   return (
     <div className="group relative">
-      <img
-        alt={name}
-        src={images[0]}
-        className="aspect-square w-full rounded-md bg-white object-cover group-hover:opacity-75 lg:aspect-auto lg:h-70"
-      />
+      <Link href={detailUrl}>
+        <img
+          alt={name}
+          src={images[0]}
+          className="aspect-square w-full rounded-md bg-white object-cover group-hover:opacity-75 lg:aspect-auto lg:h-70"
+        />
+      </Link>
       <div className="mt-4 flex justify-between">
         <div>
           <h3 className="text-sm text-gray-700">

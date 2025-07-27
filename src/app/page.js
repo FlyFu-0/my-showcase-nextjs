@@ -16,7 +16,7 @@ export default function ProductsGrid() {
             <Link href={formatLink('/#brand#', { brand: product.brand })} className="hover:underline">
               <SectionHeader title={product.brand} />
             </Link>
-            <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+            <div className="mt-6 grid grid-cols-1 gap-4 gap-y-6 sm:gap-6 lg:gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {product.models.map((el) => (
                 <ProductCardList
                   brand={product.brand}

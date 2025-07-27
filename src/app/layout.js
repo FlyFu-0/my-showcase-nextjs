@@ -14,6 +14,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const metadata = () => {
+  return {
+    title: `Sneakers Shop By CocsiMe`,
+    description: `Sneakers Shop on NextJS By CocsiMe`,
+  };
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -21,7 +28,7 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
       >
         <Header1 />
-        <main className="max-w-2xl lg:max-w-4xl px-10 m-auto">
+        <main className="max-w-3xl lg:max-w-5xl px-10 m-auto">
           {children}
         </main>
       </body>

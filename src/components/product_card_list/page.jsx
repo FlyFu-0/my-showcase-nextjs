@@ -8,35 +8,28 @@ const ProductCardList = ({
   price,
   currency,
   detailUrl = "#",
-  brandUrl = null,
 }) => {
   return (
-    <div className="group relative">
-      <Link href={detailUrl}>
+    <Link href={detailUrl}>
+      <div className="group">
         <img
           alt={name}
           src={images[0]}
           className="aspect-square w-full rounded-md bg-white object-cover group-hover:opacity-75 lg:aspect-auto lg:h-70"
         />
-      </Link>
-      <div className="mt-4 flex justify-between">
-        <div>
-          <h3 className="text-sm text-gray-700">
-            <Link href={detailUrl}>{name}</Link>
-
-            <Link
-              href={brandUrl ?? detailUrl}
-              className="block text-gray-400 italic"
-            >
-              {brand}
-            </Link>
-          </h3>
+        <div className="mt-4 flex justify-between">
+          <div>
+            <h3 className="text-sm text-gray-700">
+              {name}
+              <span className="block text-gray-400 italic">{brand}</span>
+            </h3>
+          </div>
+          <p className="text-sm font-medium text-gray-900">
+            {priceFormat(price, currency)}
+          </p>
         </div>
-        <p className="text-sm font-medium text-gray-900">
-          {priceFormat(price, currency)}
-        </p>
       </div>
-    </div>
+    </Link>
   );
 };
 

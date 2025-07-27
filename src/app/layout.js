@@ -14,19 +14,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const generateMetadata = async ({ params }) => {
-  const brand = params;
-  console.log(brand.brand);
-
-  // const product = products.find(el => toLinkFormat(el.brand) === toLinkFormat(brand.brand));
-  // console.log(product);
-
-  return {
-    title: `${'234'}`,
-    description: `Description for user "{users[params.id]}"`,
-  };
-};
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

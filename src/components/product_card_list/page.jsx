@@ -8,6 +8,7 @@ const ProductCardList = ({
   price,
   currency,
   detailUrl = "#",
+  brandUrl = null,
 }) => {
   return (
     <div className="group relative">
@@ -19,10 +20,13 @@ const ProductCardList = ({
       <div className="mt-4 flex justify-between">
         <div>
           <h3 className="text-sm text-gray-700">
-            <Link href={detailUrl}>
-              <span>{name}</span>
-              <span className="block text-gray-400 italic">{brand}</span>
-              <span aria-hidden="true" className="absolute inset-0" />
+            <Link href={detailUrl}>{name}</Link>
+
+            <Link
+              href={brandUrl ?? detailUrl}
+              className="block text-gray-400 italic"
+            >
+              {brand}
             </Link>
           </h3>
         </div>

@@ -2,13 +2,24 @@ import ProductCardList from "@/components/product_card_list/page";
 import products from "@/app/products";
 import { notFound } from "next/navigation";
 import PageHeader from "@/components/page_header/page";
-import { formatLink } from "@/helpers/helpers";
+import { formatLink, toLinkFormat } from "@/helpers/helpers";
+
+export const generateMetadata = async ({ params }) => {
+  const { brand } = params;
+
+  const product = products.find(
+    (el) => toLinkFormat(el.brand) === toLinkFormat(brand)
+  );
+
+  return {
+    title: `${product.brand}`,
+    description: `Product for "${product.brand}" brand`,
+  };
+};
 
 export default function BrandProductsGrid({ params }) {
   const brandProducts = products.find(
-    (prod) =>
-      prod.brand.toLocaleLowerCase().replace(/ /g, "-") ===
-      params.brand.toLocaleLowerCase()
+    (prod) => toLinkFormat(prod.brand) === toLinkFormat(params.brand)
   );
 
   if (!brandProducts) {
@@ -32,6 +43,7 @@ export default function BrandProductsGrid({ params }) {
               brand: brandProducts.brand,
               name: el.name,
             })}
+            brandUrl={formatLink("/#brand#", { brand: brandProducts.brand })}
           />
         ))}
       </div>

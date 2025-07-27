@@ -1,6 +1,23 @@
 import products from "@/app/products";
 import { toLinkFormat } from "@/helpers/helpers";
 
+export const generateMetadata = async ({ params }) => {
+  const { brand, id } = params;
+
+  const brandProduct = products.find(
+    (el) => toLinkFormat(el.brand) === toLinkFormat(brand)
+  );
+
+  const product = brandProduct.models.find(
+    (el) => toLinkFormat(el.name) === toLinkFormat(id)
+  );
+
+  return {
+    title: `${brandProduct.brand} ${product.name}`,
+    description: `${product.brand} ${product.name}`,
+  };
+};
+
 export default function DetailProductPage({ params }) {
   const brand = products.find(
     (prod) => toLinkFormat(prod.brand) === toLinkFormat(params.brand)

@@ -26,6 +26,7 @@ export default function ProductsGrid() {
                   currency={el.currency}
                   key={product.brand + el.name}
                   detailUrl={formatLink('/#brand#/#name#', { brand: product.brand, name: el.name })}
+                  brandUrl={formatLink('/#brand#', { brand: product.brand })}
                 />
               ))}
             </div>
